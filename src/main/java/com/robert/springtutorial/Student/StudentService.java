@@ -41,6 +41,11 @@ public class StudentService {
         }
     }
 
+    public boolean checkIfExistsByEmail(String email) {
+        var student = studentRepository.findStudentByEmail(email);
+        return student.isPresent();
+    }
+
     @Transactional
     public void edit(long studentId, String name, String email) {
         Student student = studentRepository.findById(studentId)
